@@ -1,0 +1,144 @@
+import React from 'react';
+import Link from 'next/link';
+import { ArrowRight, Terminal, Box, Cpu, Copy, User } from 'lucide-react';
+import { Button } from './ui/button';
+import { ProjectCard } from '../components/ProjectCard';
+import { projects } from '../data';
+
+const HomePage: React.FC = () => {
+  const featuredProjects = projects.slice(0, 4);
+
+  return (
+    <div className="space-y-32 pb-20">
+      {/* Hero Section */}
+      <section className="pt-8 md:pt-24 relative">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          {/* Text Content */}
+          <div className="lg:col-span-7 space-y-8">
+            <div className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-sm text-blue-800">
+              <span className="flex h-2 w-2 rounded-full bg-blue-600 mr-2"></span>
+              Open to Internship roles for Summer 2026
+            </div>
+            
+            <div className="space-y-6">
+              <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl text-slate-900 leading-[1.1]">
+                I'm Gabe! I build<span className="text-slate-600"><br></br>web systems. </span>
+              </h1>
+              <p className="text-xl text-slate-600 leading-relaxed max-w-2xl">
+                I’m a second-year Computer Science student at Ateneo de Manila University focused on building well-structured, production-minded applications emphasizing user experience.
+              </p>
+              
+              <div className="flex flex-wrap gap-4 pt-4">
+                <Link href="/projects">
+                  <Button size="lg" className="h-12 px-8 text-base">
+                    Browse Portfolio <ArrowRight size={18} className="ml-2" />
+                  </Button>
+                </Link>
+                <a href="mailto:gabrielmatthew.labariento@gmail.com">
+                  <Button variant="outline" size="lg" className="h-12 px-8 text-base bg-white">
+                    Let's talk!
+                  </Button>
+                </a>
+              </div>
+
+              <div className="pt-8 flex flex-col sm:flex-row gap-4 sm:items-center text-sm text-slate-500">
+                <span className="font-semibold tracking-wider uppercase text-xs">Tech Stack</span>
+                <div className="hidden sm:block h-px w-8 bg-slate-300"></div>
+                <div className="flex gap-6 items-center">
+                  <span className="flex items-center gap-1.5"><Terminal size={14} />TypeScript</span>
+                  <span className="flex items-center gap-1.5"><Box size={14} /> React / Next.js</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Avatar / Image */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end order-first lg:order-last ">
+             <div className="relative w-64 h-64 md:w-80 md:h-80 bg-slate-100 rounded-full overflow-hidden border-8 border-white shadow-2xl flex items-center justify-center">
+                {/* Placeholder Avatar SVG */}
+                <User size={128} className="text-slate-300" />
+             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Projects */}
+      <section className="space-y-12">
+         <div className="flex items-end justify-between">
+          <div className="space-y-2">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Selected Projects</h2>
+            <p className="text-slate-600 max-w-2xl">
+              Here are some projects I've built, check 'em out!
+            </p>
+          </div>
+          <Link href="/projects" className="hidden md:block">
+            <Button variant="ghost">View All Projects <ArrowRight size={16} className="ml-2"/></Button>
+          </Link>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {featuredProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+
+        {/* Current Focus Card */}
+        <div className="rounded-3xl border border-slate-200 bg-white p-2 md:p-3 shadow-sm">
+          <div className="flex flex-col md:flex-row gap-8 items-center bg-slate-50/50 rounded-2xl p-8 md:p-12">
+            <div className="flex-1 space-y-6">
+               <div className="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800">
+                  <span className="flex h-1.5 w-1.5 rounded-full bg-blue-600 mr-2"></span>
+                  Current Focus
+               </div>
+               <h3 className="text-2xl font-bold text-slate-900">Distributed Systems in Rust</h3>
+               <p className="text-slate-600 text-lg leading-relaxed">
+                 Currently building a custom consensus algorithm from scratch to understand fault tolerance deeper. 
+                 Exploring leader election, log replication, and Raft safety properties.
+               </p>
+               <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                 <Button variant="outline" className="mt-2 bg-white border-slate-200">
+                   View Repository <ArrowRight size={16} className="ml-2" />
+                 </Button>
+               </a>
+            </div>
+            <div className="w-full md:w-1/3 aspect-square bg-slate-200 rounded-xl flex items-center justify-center">
+               <Cpu size={64} className="text-slate-400" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 text-center space-y-8 max-w-2xl mx-auto">
+        <div className="h-12 w-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 transform rotate-3">
+           <Terminal size={24} />
+        </div>
+        <h2 className="text-4xl font-bold text-slate-900 tracking-tight">
+          Ready to build something together?
+        </h2>
+        <p className="text-xl text-slate-600 leading-relaxed">
+          I'm currently looking for new opportunities in software engineering. 
+          My inbox is always open for questions or just to say hi.
+        </p>
+        
+        <div className="pt-4 flex justify-center">
+            <div className="flex items-center gap-2 p-1.5 pl-4 pr-1.5 bg-white border border-slate-200 rounded-full shadow-sm hover:border-slate-300 transition-colors">
+              <span className="text-slate-600 font-medium text-sm">gabrielmatthew.labariento@gmail.com</span>
+              <Button 
+                size="sm" 
+                className="rounded-full px-4 h-8"
+                // onClick={() => {
+                //   navigator.clipboard.writeText('gabrielmatthew.labariento@gmail.com');
+                //   // Add your toast notification here
+                // }}
+              >
+                <Copy size={14} className="mr-2" /> Copy
+              </Button>
+            </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default HomePage;

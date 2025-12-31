@@ -7,12 +7,13 @@ export const navItems: NavItem[] = [
   { label: 'Home', path: '/' },
   { label: 'Projects', path: '/projects' },
   { label: 'About', path: '/about' },
+  {label: 'Blog', path: "/blog"}
 ];
 
 export const socialLinks: SocialLink[] = [
-  { platform: 'GitHub', url: 'https://github.com', label: 'github.com/engineer' },
-  { platform: 'LinkedIn', url: 'https://linkedin.com', label: 'linkedin.com/in/engineer' },
-  { platform: 'Email', url: 'mailto:hello@example.com', label: 'hello@example.com' },
+  { platform: 'GitHub', url: 'https://github.com/Gabriel-Labariento', label: 'github.com' },
+  { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/gabriel-labariento/', label: 'linkedin.com/in/' },
+  { platform: 'Email', url: 'mailto:gabrielmatthew.labariento@gmail.com', label: 'email@example.com' },
 ];
 
 export const projects: Project[] = [
