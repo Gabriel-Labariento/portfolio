@@ -4,6 +4,7 @@ import { ArrowRight, Terminal, Box, Cpu, Copy, User } from 'lucide-react';
 import { Button } from './ui/button';
 import { ProjectCard } from '../components/ProjectCard';
 import { projects } from '../data';
+import Image from 'next/image';
 
 const HomePage: React.FC = () => {
   const featuredProjects = projects.slice(0, 4);
@@ -22,10 +23,10 @@ const HomePage: React.FC = () => {
             
             <div className="space-y-6">
               <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl text-slate-900 leading-[1.1]">
-                I'm Gabe! I build<span className="text-slate-600"><br></br>web systems. </span>
+                I'm Gabe! I build<span className="text-slate-600"><br></br>and shit. </span>
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed max-w-2xl">
-                I’m a second-year Computer Science student at Ateneo de Manila University focused on building well-structured, production-minded applications emphasizing user experience.
+                I’m a second-year Computer Science student at 67 University focused on building well-structured, six or seven applications emphasizing user experience.
               </p>
               
               <div className="flex flex-wrap gap-4 pt-4">
@@ -54,9 +55,10 @@ const HomePage: React.FC = () => {
 
           {/* Avatar / Image */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end order-first lg:order-last ">
-             <div className="relative w-64 h-64 md:w-80 md:h-80 bg-slate-100 rounded-full overflow-hidden border-8 border-white shadow-2xl flex items-center justify-center">
+             <div className=" flex items-center justify-center">
                 {/* Placeholder Avatar SVG */}
-                <User size={128} className="text-slate-300" />
+                {/* <User size={128} className="text-slate-300" /> */}
+                 <Image width={700} height={700} src="/avatar.png" alt="Profile" className="w-full h-full object-cover md:w-80 md:h-80 bg-slate-100 rounded-3xl overflow-hidden  border-white shadow-2xl" /> 
              </div>
           </div>
         </div>
