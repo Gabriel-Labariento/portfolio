@@ -18,70 +18,55 @@ export const socialLinks: SocialLink[] = [
 
 export const projects: Project[] = [
   {
-    id: '1',
-    slug: 'distributed-task-queue',
-    title: 'Distributed Task Queue',
-    shortDescription: 'A high-throughput, fault-tolerant job processing system built with Go and Redis.',
-    year: '2023',
-    role: 'Backend Engineer',
-    links: {
-      repo: 'https://github.com/example/task-queue',
-    },
-    content: {
-      problem:
-        "Processing image resize jobs for a mock e-commerce platform was causing main thread blocking and timeouts during high-traffic events. We needed a way to offload resource-intensive tasks asynchronously without losing jobs during server crashes.",
-      approach:
-        "I designed a distributed system using a producer-consumer pattern. The API accepts jobs and pushes them to a reliable Redis queue. Worker nodes (written in Go for concurrency performance) pull jobs, process them, and update status in a PostgreSQL database. I implemented a 'reliable queue' pattern to handle worker failures.",
-      techStack: ['Go', 'Redis', 'Docker', 'PostgreSQL', 'gRPC'],
-      challenges:
-        "Deciding between RabbitMQ and Redis was a key trade-off. While RabbitMQ offers robust routing, I chose Redis for its lower latency and operational simplicity given our scale requirements (<10k jobs/sec). To handle 'at-least-once' delivery, I used Redis RPOPLPUSH to move jobs to a processing list, ensuring that if a worker dies, the job isn't lost but remains in a pending state to be reclaimed by a monitoring process.",
-      outcome:
-        "The system handled a peak load of 500 requests/second with 99.9% uptime. I learned deeply about eventual consistency, idempotency in distributed systems, and how to gracefully handle process termination signals.",
-    },
+  id: '1',
+  slug: 'chic-couture-catalog',
+  title: 'Chic Couture Product Catalog Website',
+  shortDescription:
+    'A full-stack catalog website for a local jewelry reseller with admin management and customer inquiries.',
+  year: '2025',
+  role: 'Full Stack Developer',
+  links: {
+    demo: 'https://chic-couture-a75n.vercel.app/',
   },
-  {
-    id: '2',
-    slug: 'realtime-collab-editor',
-    title: 'Real-time Collaboration Engine',
-    shortDescription: 'Conflict-free replicated data type (CRDT) implementation for a collaborative text editor.',
-    year: '2024',
-    role: 'Full Stack Engineer',
-    links: {
-      repo: 'https://github.com/example/collab-editor',
-      demo: 'https://demo.example.com',
-    },
-    content: {
-      problem:
-        "Standard WebSocket broadcasting for text editing leads to race conditions (e.g., 'last write wins') which destroys user intent when multiple users type simultaneously. I wanted to build a true Google Docs-style collaboration experience.",
-      approach:
-        "Instead of sending raw text, I implemented a CRDT (Yjs-like structure) to represent the document state. Clients send delta updates (operations) rather than full state. The frontend uses React with a custom hook to bind the CRDT state to a contenteditable div.",
-      techStack: ['TypeScript', 'React', 'WebSockets', 'Node.js', 'CRDTs'],
-      challenges:
-        "Optimizing the memory footprint of the operation log was difficult. A naive CRDT implementation grows indefinitely. I implemented garbage collection for operations that have been acknowledged by all connected clients. I also had to balance the trade-off between the complexity of Operational Transformation (OT) vs CRDTs; I chose CRDTs for their decentralized nature, allowing offline support in the future.",
-      outcome:
-        "Built a functional editor supporting 50+ concurrent users with eventual consistency. This project taught me about logical clocks, distributed state management, and the complexities of synchronizing state across unreliable networks.",
-    },
+  content: {
+    problem:
+      "A local jewelry reseller needed a professional way to showcase their products online without the complexity of a full e-commerce system. They wanted customers to browse products by category and easily inquire about items, while retaining manual control over sales and inventory.",
+    approach:
+      "I built a catalog-style website focused on product discovery rather than checkout. Products are organized into categories such as bracelets, watches, necklaces, and rings, with client-side filtering for ease of browsing. Instead of a shopping cart, customers can send inquiries directly to the business via email using Resend. On the backend, I implemented an admin dashboard where the business owner can upload products with images, update availability statuses, and track inquiry statuses.",
+    techStack: [
+      'TypeScript',
+      'Next.js',
+      'Supabase',
+      'Cloudinary',
+      'Resend',
+      'Tailwind CSS',
+    ],
+    challenges:
+      "Designing a system that felt simple for customers but powerful for the business owner was the main challenge. I had to ensure image uploads were reliable and performant while keeping the admin dashboard intuitive for a non-technical user. Another consideration was separating inquiry tracking from actual email replies, since responses are handled externally via email.",
+    outcome:
+      "The business gained a clean, easy-to-maintain online catalog that improved how they present products to customers. This project strengthened my experience with real client requirements, admin tooling, third-party integrations, and building systems that prioritize usability over unnecessary complexity.",
   },
-  {
-    id: '3',
-    slug: 'query-optimizer',
-    title: 'SQL Query Visualizer & Optimizer',
-    shortDescription: 'A tool for developers to understand and optimize PostgreSQL query plans.',
-    year: '2023',
-    role: 'Frontend Engineer',
-    links: {
-      repo: 'https://github.com/example/query-opt',
-    },
-    content: {
-      problem:
-        "Junior developers often struggle to understand `EXPLAIN ANALYZE` output from Postgres. The text output is verbose and hierarchical relationships are hard to parse mentally.",
-      approach:
-        "I built a parser that transforms the raw JSON output of Postgres EXPLAIN into a directed acyclic graph (DAG). I used D3.js to visualize the query execution path, highlighting high-cost nodes (like Sequential Scans on large tables) in red to alert the user.",
-      techStack: ['React', 'D3.js', 'PostgreSQL', 'Tailwind CSS'],
-      challenges:
-        "The recursive nature of query plans made rendering performant trees challenging. I utilized memoization in React to prevent re-calculating the graph layout on every hover event. I also had to decide how much abstraction to provide—hiding too much detail makes the tool useless for experts, so I added a 'drill-down' mode for raw stats.",
-      outcome:
-        "The tool is now used by my university's database club. It reduced the average time to debug slow queries by ~40% for students. I gained significant experience with recursion, graph theory algorithms, and data visualization performance.",
-    },
+},
+{
+  id: '2',
+  slug: 'pop-up-marketplace',
+  title: 'Pop Up — Event & Booth Matching Platform',
+  shortDescription:
+    'A two-sided platform connecting event hosts and pop-up businesses for sponsorship and booth placements.',
+  year: '2025',
+  role: 'Founder & Full Stack Developer',
+  links: {},
+  content: {
+    problem:
+      "Pop-up business owners struggle to discover legitimate events where they can set up stalls, while event hosts—especially student organizations—find it equally difficult to source pop-up booths to sponsor or participate in their events. Most coordination happens through fragmented Facebook pages and group chats, making discovery inefficient and unreliable.",
+    approach:
+      "I designed Pop Up as a focused two-sided platform. Event hosts can publish upcoming events, while pop-up business owners can browse and apply to sponsor or participate in these events. Hosts can then review applications and approve or reject them through a centralized interface, reducing back-and-forth and keeping all coordination in one place.",
+    techStack: ['React', 'React Router', 'Supabase', 'PostgreSQL'],
+    challenges:
+      "Designing the application flow between two different user roles was the biggest challenge. I had to carefully model permissions, ensuring hosts could manage events and applications while pop-up owners could only apply and track their submissions. Since the project is still in MVP stage, I’m actively iterating on the data model and business logic to keep the system flexible without overengineering it.",
+    outcome:
+      "Pop Up is currently in active development as an MVP. The project has helped me develop stronger product thinking, especially in translating real-world pain points into clear user flows, designing marketplace-style interactions, and building scalable foundations even at an early stage.",
   },
+},
+
 ];

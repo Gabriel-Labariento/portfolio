@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Terminal, Box, Cpu, Copy, User } from 'lucide-react';
+import { ArrowRight, Terminal, Box, Cpu, Copy, Layout } from 'lucide-react';
 import { Button } from './ui/button';
 import { ProjectCard } from '../components/ProjectCard';
 import { projects } from '../data';
@@ -23,15 +23,15 @@ const HomePage: React.FC = () => {
             
             <div className="space-y-6">
               <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl text-slate-900 leading-[1.1]">
-                I'm Gabe! I build<span className="text-slate-600"><br></br>and shit. </span>
+                I'm Gabe! I build<span className="text-slate-600"><br></br>web systems and <span className='italic underline'>solutions.</span> </span>
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed max-w-2xl">
-                I’m a second-year Computer Science student at 67 University focused on building well-structured, six or seven applications emphasizing user experience.
+                I’m a second-year Computer Science student at Ateneo de Manila University focused on building thoughtful, real-world web products.
               </p>
               
               <div className="flex flex-wrap gap-4 pt-4">
                 <Link href="/projects">
-                  <Button size="lg" className="h-12 px-8 text-base">
+                  <Button size="lg" className="h-12 px-8 text-base hover:cursor-pointer">
                     Browse Portfolio <ArrowRight size={18} className="ml-2" />
                   </Button>
                 </Link>
@@ -70,7 +70,7 @@ const HomePage: React.FC = () => {
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Selected Projects</h2>
             <p className="text-slate-600 max-w-2xl">
-              Here are some projects I've built, check 'em out!
+              Here are some projects I've worked on, check 'em out!
             </p>
           </div>
           <Link href="/projects" className="hidden md:block">
@@ -85,29 +85,31 @@ const HomePage: React.FC = () => {
         </div>
 
         {/* Current Focus Card */}
+        {/* Current Focus Card */}
         <div className="rounded-3xl border border-slate-200 bg-white p-2 md:p-3 shadow-sm">
           <div className="flex flex-col md:flex-row gap-8 items-center bg-slate-50/50 rounded-2xl p-8 md:p-12">
             <div className="flex-1 space-y-6">
-               <div className="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800">
-                  <span className="flex h-1.5 w-1.5 rounded-full bg-blue-600 mr-2"></span>
-                  Current Focus
-               </div>
-               <h3 className="text-2xl font-bold text-slate-900">Distributed Systems in Rust</h3>
-               <p className="text-slate-600 text-lg leading-relaxed">
-                 Currently building a custom consensus algorithm from scratch to understand fault tolerance deeper. 
-                 Exploring leader election, log replication, and Raft safety properties.
-               </p>
-               <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                 <Button variant="outline" className="mt-2 bg-white border-slate-200">
-                   View Repository <ArrowRight size={16} className="ml-2" />
-                 </Button>
-               </a>
+              <div className="inline-flex items-center rounded-full bg-indigo-100 px-3 py-1 text-xs font-medium text-indigo-800">
+                <span className="flex h-1.5 w-1.5 rounded-full bg-indigo-600 mr-2"></span>
+                Current Focus
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900">
+                IM Summit 2026 — Website & Product Management
+              </h3>
+              <p className="text-slate-600 text-lg leading-relaxed">
+                Serving as Product Manager for IM Summit 2026, the largest event of the Ateneo Management Information Systems Association. 
+                I’m leading the planning and development of the event website, translating organizational requirements into clear product scope, timelines, and technical decisions.
+              </p>
+              <p className="text-slate-600 text-lg leading-relaxed">
+                The role involves coordinating with multiple stakeholders, defining core user flows, and ensuring the site supports a large-scale tech and business case competition.
+              </p>
             </div>
             <div className="w-full md:w-1/3 aspect-square bg-slate-200 rounded-xl flex items-center justify-center">
-               <Cpu size={64} className="text-slate-400" />
+              {/* <Layout size={64} className="text-slate-400" /> */}
             </div>
           </div>
         </div>
+
       </section>
 
       {/* CTA Section */}
