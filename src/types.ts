@@ -30,3 +30,19 @@ export interface NavItem {
   label: string;
   path: string;
 }
+
+export interface HeroData {
+  headline: {
+    start: string;
+    highlight: string;
+    subHighlight: string;
+  };
+  subtext: string;
+  techStack: string[];
+}
+
+export interface CurrentFocusData {
+  title: string;
+  description: string;
+  role: string;
+}

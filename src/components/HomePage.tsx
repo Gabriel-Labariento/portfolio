@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArrowRight, Terminal, Box, Cpu, Copy, Layout } from 'lucide-react';
 import { Button } from './ui/button';
 import { ProjectCard } from '../components/ProjectCard';
-import { projects } from '../data';
+import { projects, heroData, currentFocus } from '../data';
 import Image from 'next/image';
 
 const HomePage: React.FC = () => {
@@ -20,15 +20,15 @@ const HomePage: React.FC = () => {
               <span className="flex h-2 w-2 rounded-full bg-blue-600 mr-2"></span>
               Open to Internship roles for Summer 2026
             </div>
-            
+
             <div className="space-y-6">
               <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl text-slate-900 leading-[1.1]">
-                I'm Gabe! I build<span className="text-slate-600"><br></br>web systems and <span className='italic underline'>solutions.</span> </span>
+                {heroData.headline.start}<span className="text-slate-600"><br></br>{heroData.headline.highlight} <span className='italic underline'>{heroData.headline.subHighlight}</span> </span>
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed max-w-2xl">
-                I’m a second-year Computer Science student at Ateneo de Manila University focused on building thoughtful, real-world web products.
+                {heroData.subtext}
               </p>
-              
+
               <div className="flex flex-wrap gap-4 pt-4">
                 <Link href="/projects">
                   <Button size="lg" className="h-12 px-8 text-base hover:cursor-pointer">
@@ -46,8 +46,8 @@ const HomePage: React.FC = () => {
                 <span className="font-semibold tracking-wider uppercase text-xs">Tech Stack</span>
                 <div className="hidden sm:block h-px w-8 bg-slate-300"></div>
                 <div className="flex gap-6 items-center">
-                  <span className="flex items-center gap-1.5"><Terminal size={14} />TypeScript</span>
-                  <span className="flex items-center gap-1.5"><Box size={14} /> React / Next.js</span>
+                  <span className="flex items-center gap-1.5"><Terminal size={14} />{heroData.techStack[0]}</span>
+                  <span className="flex items-center gap-1.5"><Box size={14} /> {heroData.techStack[1]}</span>
                 </div>
               </div>
             </div>
@@ -55,18 +55,18 @@ const HomePage: React.FC = () => {
 
           {/* Avatar / Image */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end order-first lg:order-last ">
-             <div className=" flex items-center justify-center">
-                {/* Placeholder Avatar SVG */}
-                {/* <User size={128} className="text-slate-300" /> */}
-                 <Image width={700} height={700} src="/avatar.png" alt="Profile" className="w-full h-full object-cover md:w-80 md:h-80 bg-slate-100 rounded-3xl overflow-hidden  border-white shadow-2xl" /> 
-             </div>
+            <div className=" flex items-center justify-center">
+              {/* Placeholder Avatar SVG */}
+              {/* <User size={128} className="text-slate-300" /> */}
+              <Image width={700} height={700} src="/avatar.png" alt="Profile" className="w-full h-full object-cover md:w-80 md:h-80 bg-slate-100 rounded-3xl overflow-hidden  border-white shadow-2xl" />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Featured Projects */}
       <section className="space-y-12">
-         <div className="flex items-end justify-between">
+        <div className="flex items-end justify-between">
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Selected Projects</h2>
             <p className="text-slate-600 max-w-2xl">
@@ -74,7 +74,7 @@ const HomePage: React.FC = () => {
             </p>
           </div>
           <Link href="/projects" className="hidden md:block">
-            <Button variant="ghost">View All Projects <ArrowRight size={16} className="ml-2"/></Button>
+            <Button variant="ghost">View All Projects <ArrowRight size={16} className="ml-2" /></Button>
           </Link>
         </div>
 
@@ -91,17 +91,13 @@ const HomePage: React.FC = () => {
             <div className="flex-1 space-y-6">
               <div className="inline-flex items-center rounded-full bg-indigo-100 px-3 py-1 text-xs font-medium text-indigo-800">
                 <span className="flex h-1.5 w-1.5 rounded-full bg-indigo-600 mr-2"></span>
-                Current Focus
+                {currentFocus.role}
               </div>
               <h3 className="text-2xl font-bold text-slate-900">
-                IM Summit 2026 — Website & Product Management
+                {currentFocus.title}
               </h3>
               <p className="text-slate-600 text-lg leading-relaxed">
-                Serving as Product Manager for IM Summit 2026, the largest event of the Ateneo Management Information Systems Association. 
-                I’m leading the planning and development of the event website, translating organizational requirements into clear product scope, timelines, and technical decisions.
-              </p>
-              <p className="text-slate-600 text-lg leading-relaxed">
-                The role involves coordinating with multiple stakeholders, defining core user flows, and ensuring the site supports a large-scale tech and business case competition.
+                {currentFocus.description}
               </p>
             </div>
             <div className="w-full md:w-1/3 aspect-square bg-slate-200 rounded-xl flex items-center justify-center">
@@ -115,30 +111,30 @@ const HomePage: React.FC = () => {
       {/* CTA Section */}
       <section className="py-24 text-center space-y-8 max-w-2xl mx-auto">
         <div className="h-12 w-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 transform rotate-3">
-           <Terminal size={24} />
+          <Terminal size={24} />
         </div>
         <h2 className="text-4xl font-bold text-slate-900 tracking-tight">
           Ready to build something together?
         </h2>
         <p className="text-xl text-slate-600 leading-relaxed">
-          I'm currently looking for new opportunities in software engineering. 
+          I'm currently looking for new opportunities in software engineering.
           My inbox is always open for questions or just to say hi.
         </p>
-        
+
         <div className="pt-4 flex justify-center">
-            <div className="flex items-center gap-2 p-1.5 pl-4 pr-1.5 bg-white border border-slate-200 rounded-full shadow-sm hover:border-slate-300 transition-colors">
-              <span className="text-slate-600 font-medium text-sm">gabrielmatthew.labariento@gmail.com</span>
-              <Button 
-                size="sm" 
-                className="rounded-full px-4 h-8"
-                // onClick={() => {
-                //   navigator.clipboard.writeText('gabrielmatthew.labariento@gmail.com');
-                //   // Add your toast notification here
-                // }}
-              >
-                <Copy size={14} className="mr-2" /> Copy
-              </Button>
-            </div>
+          <div className="flex items-center gap-2 p-1.5 pl-4 pr-1.5 bg-white border border-slate-200 rounded-full shadow-sm hover:border-slate-300 transition-colors">
+            <span className="text-slate-600 font-medium text-sm">gabrielmatthew.labariento@gmail.com</span>
+            <Button
+              size="sm"
+              className="rounded-full px-4 h-8"
+            // onClick={() => {
+            //   navigator.clipboard.writeText('gabrielmatthew.labariento@gmail.com');
+            //   // Add your toast notification here
+            // }}
+            >
+              <Copy size={14} className="mr-2" /> Copy
+            </Button>
+          </div>
         </div>
       </section>
     </div>
