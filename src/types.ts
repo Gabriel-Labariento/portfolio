@@ -1,9 +1,22 @@
 export interface ProjectContent {
   problem: string;
   approach: string;
+  approachImage?: string;
   techStack: string[];
-  challenges: string; // "Key Technical Decisions & Tradeoffs"
-  outcome: string; // "What I Learned"
+  technicalDecisions: {
+    title: string;
+    description: string;
+    codeSnippet?: {
+      language: string;
+      code: string;
+    };
+  }[];
+  tradeoffs: {
+    title: string;
+    description: string;
+    type: 'positive' | 'negative' | 'neutral';
+  }[];
+  learned: string[];
 }
 
 export interface Project {
@@ -45,4 +58,45 @@ export interface CurrentFocusData {
   title: string;
   description: string;
   role: string;
+}
+
+export interface Experience {
+  company: string;
+  role: string;
+  period: string;
+  description: string;
+  achievements?: string[];
+}
+
+export interface Education {
+  institution: string;
+  degree: string;
+  period: string;
+  honors?: string;
+  relevantCoursework?: string[];
+  activities?: string[];
+}
+
+export interface Certification {
+  name: string;
+  issuer: string;
+  date: string;
+  url?: string;
+}
+
+export interface Volunteering {
+  organization: string;
+  role: string;
+  period: string;
+  description: string;
+}
+
+export interface AboutPageData {
+  title: string;
+  bio: string[];
+  skills: string[];
+  education: Education[];
+  experience: Experience[];
+  certifications: Certification[];
+  volunteering: Volunteering[];
 }

@@ -85,7 +85,6 @@ const HomePage: React.FC = () => {
         </div>
 
         {/* Current Focus Card */}
-        {/* Current Focus Card */}
         <div className="rounded-3xl border border-slate-200 bg-white p-2 md:p-3 shadow-sm">
           <div className="flex flex-col md:flex-row gap-8 items-center bg-slate-50/50 rounded-2xl p-8 md:p-12">
             <div className="flex-1 space-y-6">
@@ -102,6 +101,7 @@ const HomePage: React.FC = () => {
             </div>
             <div className="w-full md:w-1/3 aspect-square bg-slate-200 rounded-xl flex items-center justify-center">
               {/* <Layout size={64} className="text-slate-400" /> */}
+
             </div>
           </div>
         </div>

@@ -13,7 +13,7 @@ export default function ProjectsPage() {
         <div className="space-y-12 py-12">
             <div className="space-y-4">
                 <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">Projects</h1>
-                <p className="text-lg text-slate-600 max-w-2xl">
+                <p className="text-lg text-slate-600 max-w-3xl">
                     A collection of projects I've worked on, ranging from web applications to experiments.
                 </p>
             </div>
