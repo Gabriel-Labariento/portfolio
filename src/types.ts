@@ -58,6 +58,7 @@ export interface CurrentFocusData {
   title: string;
   description: string;
   role: string;
+  image: string;
 }
 
 export interface Experience {

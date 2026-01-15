@@ -29,7 +29,8 @@ export const heroData: HeroData = {
 export const currentFocus: CurrentFocusData = {
   title: "IM Summit 2026 — Website & Product Management",
   role: "Current Focus",
-  description: "Serving as Product Manager for IM Summit 2026, the largest event of the Ateneo Management Information Systems Association. I’m leading the planning and development of the event website, translating organizational requirements into clear product scope, timelines, and technical decisions. The role involves coordinating with multiple stakeholders, defining core user flows, and ensuring the site supports a large-scale tech and business case competition."
+  description: "Serving as Product Manager for IM Summit 2026, the largest event of the Ateneo Management Information Systems Association. I’m leading the planning and development of the event website, translating organizational requirements into clear product scope, timelines, and technical decisions. The role involves coordinating with multiple stakeholders, defining core user flows, and ensuring the site supports a large-scale tech and business case competition.",
+  image: "/im-summit.png"
 };
 
 export const projects: Project[] = [
